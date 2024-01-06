@@ -1,2 +1,20 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h2>User info</h2>
+<%= image_tag @user.get_profile_image(10,10) %>
+<table class="userinfo">
+  <tbody>
+  <tr>
+    <th>neme</th>
+    <th><div class="profile-name"><%= @user.name %></div></th>
+  </tr>
+  <tr>
+    <th>introduction</th>
+    <th><div class="profile-introduction"><%= @user.introduction %></th>
+  </tr>
+  </tbody>
+</table>
+
+<% if @user.id == current_user.id %>
+  <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary w-25 mt-2" do %>
+  <i class="fa-solid fa-user-gear"></i>
+<% end %>
+<% end %>

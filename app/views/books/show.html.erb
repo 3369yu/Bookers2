@@ -1,0 +1,16 @@
+<h2>Book detail</h2>
+<table class="bookdetail">
+  <tbody>
+  <tr>
+    <th><div class="title"><%= @book.Title %></div></th>
+  </tr>
+  <tr>
+    <th><div class="pinion"><%= @book.Opinion %></th>
+  </tr>
+  </tbody>
+</table>
+
+<% if @book.user_id == current_user.id %>
+  <%= link_to 'edit', edit_book_path(@book.id), class: "btn btn-outline-success  mt-2" %>
+  <%= link_to 'Destroy', book_path(@book.id), method: :delete,  "data-confirm" =>"Are you sure?", class: "btn btn-outline-danger  mt-2" %>
+<% end %>
