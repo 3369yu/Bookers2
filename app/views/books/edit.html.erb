@@ -1,12 +1,12 @@
 <h2>Editing Book</h2>
 <%= form_with model: @book do |f| %>
-  <div><label for="inputYitle">Title</label></div>
-    <%= f.text_field :title, autofocus: true, id:"inputtitle" %>
+  <div><label for="inputTitle">Title</label></div>
+    <%= f.text_field :Title, autofocus: true, id:"inputtitle" %>
   <div><label for="inputOpinion">Opinion</label></div>
-    <%= f.file_field :opinion, autofocus: true, id:"inputopinion" %>
+    <%= f.text_field :Opinion, autofocus: true, id:"inputopinion" %>
   <div><%= f.submit "Update Book", class:"btn btn-secondary mt-2" %></div>
   <% end %>
   
-  <%= link_to 'Show', @book %>
-  |
-  <%= link_to 'Back', '/books' %>
+  <span><%= link_to 'Show', @book %></span>
+  <span>|</span>
+  <span><%= link_to 'Back', '/books' %></span>

@@ -11,6 +11,10 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  
+  <div>
+  <%= flash[:notice] %>
+  </div>
 
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
@@ -27,34 +31,57 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
             <li class="nav-item">
-              <i class="fa-solid fa-house"></i><%= link_to "Home", root_path %>
+              <%= link_to user_path(current_user) do %>
+              <i class="fa-solid fa-house"></i>
+              Home
+              <% end %>
             </li>
             <li class="nav-item">
-              <i class="fa-solid fa-users"></i><%= link_to "Users", '/users' %>
+              <%= link_to '/users' do %>
+              <i class="fa-solid fa-users"></i>
+              Usres
+              <% end %>
+            <li class="nav-item">
+              <%= link_to '/books' do %>
+              <i class="fa-solid fa-book-open"></i>
+              Books
+              <% end %>
             </li>
             <li class="nav-item">
-              <i class="fa-solid fa-book-open"></i><%= link_to "Books", '/books' %>
-            </li>
-            <li class="nav-item">
-              <i class="fa-solid fa-right-from-bracket"></i><%= link_to "Log out", destroy_user_session_path, method: :delete %>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa-solid fa-right-from-bracket"></i>
+              Log out
+              <% end %>
             </li>
             <% else %>
             <li class="nav-item">
-              <i class="fa-solid fa-house"></i><%= link_to "Home", root_path %>
+              <%= link_to root_path do %>
+              <i class="fa-solid fa-house"></i>
+              Home
+              <% end %>
             </li>
             <li class="nav-item">
-              <i class="fa-solid fa-link"></i><%= link_to "About", about_path %>
+              <%= link_to  about_path do %>
+              <i class="fa-solid fa-link"></i>
+              About
+              <% end %>
             </li>
             <li class="nav-item">
-              <i class="fa-solid fa-user-plus"></i><%= link_to "sign up", new_user_registration_path %>
+              <%= link_to new_user_registration_path do %>
+              <i class="fa-solid fa-user-plus"></i>
+              sign up
+              <% end %>
             </li>
             <li class="nav-item">
-              <i class="fa-solid fa-right-to-bracket"></i><%= link_to "Log in", new_user_session_path %>
+              <%= link_to new_user_session_path do %>
+              <i class="fa-solid fa-right-to-bracket"></i>
+              Log in
+              <% end %>
             </li>
             <% end %>
             </ul>
           </div>
-        </div?>
+        </div>
       </nav>
     </header>
     <%= yield %>

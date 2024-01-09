@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md3">
+      <h2>User info</h2>
+      <%= image_tag @user.get_profile_image(100,100) %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>neme</td>
+          <td><div class="profile-name"><%= @user.name %></div></td>
+        </tr>
+        <tr>
+          <td>introduction</td>
+          <td><div class="profile-introduction"><%= @user.introduction %></div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <% if @user.id == current_user.id %>
+      <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary w-100 mt-2" do %>
+      <i class="fa-solid fa-user-gear"></i>
+      <% end %>
+    <% end %>
+    <% if @user.id != current_user.id %>
+      <%= link_to user_path(current_user.id), class: "btn btn-outline-secondary w-100 mt-2" do %>
+    <i class="fa-solid fa-user-gear"></i>
+      <% end %>
+    <% end %>
+    
+    <div class="row">
+      <div class="col-md3">
+        <h2>New book</h2>
+        <%= form_with model: @books do |f| %>
+        <div>Title</div>
+        <%= f.text_field :Title %>
+        <div>Opinion</div>
+        <%= f.text_area :Opinion %>
+
+      <div><%= f.submit 'Create Book', class:"btn btn-success mt-2" %></div>
+      <% end %>
+    </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+  <h2>Books</h2>
+  <table>
+    <thead>
+        <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+        </tr>
+      </thead>
+  <% @book.each do |book| %>
+  <tr>
+    <td>
+      <%= link_to user_path(book.user_id) do %>
+      <%= image_tag book.user.get_profile_image(80,80) %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to book_path(book.id) do %>
+      <%= book.Title %>
+      <% end %>
+    </td>
+    <td><%= book.Opinion %></td>
+  </tr>
+  <% end %>
+  </table>
+  </div>

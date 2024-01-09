@@ -1,16 +1,23 @@
-<h2>Book detail</h2>
-<table class="bookdetail">
-  <tbody>
-  <tr>
-    <th><div class="title"><%= @book.Title %></div></th>
-  </tr>
-  <tr>
-    <th><div class="pinion"><%= @book.Opinion %></th>
-  </tr>
+<%= render 'users/list', user: @user %>
+
+  <div class="col-md-8">
+    <h2>Book detail</h2>
+    <table class="bookdetail">
+    <tbody>
+      <tr>
+      <td><%= link_to user_path(@book.user_id) do %>
+        <%= image_tag @book.user.get_profile_image(100,100), alt: 'name' %>
+        <% end %>
+        <p><%= link_to @book.user.name, user_path(@book.user_id) %></p></td>
+      <td><%= link_to book_path(@book.id) do %>
+        <%= @book.Title %>
+        <% end %></td>
+      <td><div class="opinion"><%= @book.Opinion %></td>
+      <td><% if @book.user_id == current_user.id %>
+        <%= link_to 'edit', edit_book_path(@book.id), class: "btn btn-success  mt-2" %>
+        <%= link_to 'Destroy', book_path(@book.id), method: :delete,  "data-confirm" =>"本当に消しますか？", class: "btn btn-danger  mt-2" %>
+        <% end %>
+      </td>
+    </tr>
   </tbody>
 </table>
-
-<% if @book.user_id == current_user.id %>
-  <%= link_to 'edit', edit_book_path(@book.id), class: "btn btn-outline-success  mt-2" %>
-  <%= link_to 'Destroy', book_path(@book.id), method: :delete,  "data-confirm" =>"Are you sure?", class: "btn btn-outline-danger  mt-2" %>
-<% end %>

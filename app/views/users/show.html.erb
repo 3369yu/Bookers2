@@ -1,20 +1,39 @@
-<h2>User info</h2>
-<%= image_tag @user.get_profile_image(10,10) %>
-<table class="userinfo">
-  <tbody>
-  <tr>
-    <th>neme</th>
-    <th><div class="profile-name"><%= @user.name %></div></th>
-  </tr>
-  <tr>
-    <th>introduction</th>
-    <th><div class="profile-introduction"><%= @user.introduction %></th>
-  </tr>
-  </tbody>
-</table>
+<%= flash[:notice] %>
 
-<% if @user.id == current_user.id %>
-  <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary w-25 mt-2" do %>
-  <i class="fa-solid fa-user-gear"></i>
-<% end %>
-<% end %>
+<%= render 'list', user: @user %>
+
+  <div class="col-lg-8">
+    <h2>Book</h2>
+      <table class="table">
+        <thead>
+          <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @book.each do |book| %>
+            <% if book.user_id == current_user.id %>
+              <tr>
+                <td>
+                <%= link_to user_path(book.user_id) do %>
+                <%= image_tag book.user.get_profile_image(100,100) %>
+                <% end %>
+                </td>
+                <td>
+                <%= link_to book_path(book.id) do %>
+                <%= book.Title %>
+                <% end %>
+                </td>
+                <td>
+                <div class="opinion"><%= book.Opinion %></div>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>
+</div>
