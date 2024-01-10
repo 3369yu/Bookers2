@@ -6,43 +6,17 @@
   box-sizing: border-box;
 }
 
-.navbar .nav-item a,
-.navbar .navbar-brand 
-{
+.navbar .nav-item a,{
   margin-left: 15px;
   color: white !important;
 }
 
 .navbar .nav-item a:hover 
 {
-   color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
-.col-lg-8 {
-  margin: 20px;
-}
 
-table, td, th {
-  border-bottom: 1px solid #f5f5f5;
-}
-
-table {
-  width: 200px;
-  height: 100px;
-  margin-bottom: 20px;
-  border-collapse: collapse;
-}
-
-.table {
-  width: 700p;
-  height: 50px;
-  border-collapse: collapse;
-}
-
-.newbook {
-  margin-top: 20px;
-}
-
-footer {
-  margin: auto;
+.row {
+  display: flex;
 }

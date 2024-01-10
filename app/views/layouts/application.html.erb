@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,12 +9,10 @@
     <script src="https://kit.fontawesome.com/f36e31aefb.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </head>
   
-  <div>
-  <%= flash[:notice] %>
-  </div>
-
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -39,7 +36,7 @@
             <li class="nav-item">
               <%= link_to '/users' do %>
               <i class="fa-solid fa-users"></i>
-              Usres
+              Users
               <% end %>
             <li class="nav-item">
               <%= link_to '/books' do %>
@@ -61,7 +58,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to  about_path do %>
+              <%= link_to about_path do %>
               <i class="fa-solid fa-link"></i>
               About
               <% end %>
@@ -69,7 +66,7 @@
             <li class="nav-item">
               <%= link_to new_user_registration_path do %>
               <i class="fa-solid fa-user-plus"></i>
-              sign up
+              Sign up
               <% end %>
             </li>
             <li class="nav-item">
@@ -84,9 +81,12 @@
         </div>
       </nav>
     </header>
+    <div>
+      <%= flash[:notice] %>
+    </div>
     <%= yield %>
     <footer>
-      <p>CopyRight Infratop.inc</p>
+      <p class="text-center">CopyRight Infratop.inc</p>
     </footer>
   </body>
 </html>
