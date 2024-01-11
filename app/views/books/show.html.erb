@@ -9,7 +9,7 @@
         <%= image_tag @book.user.get_profile_image(100,100), alt: 'name' %>
         <% end %>
         <p><%= link_to @book.user.name, user_path(@book.user_id) %></p></td>
-      <td><%= link_to book_path(@book.id) do %>
+        <td><%= link_to book_path do %>
         <%= @book.title %>
         <% end %></td>
       <td><div class="opinion"><%= @book.body %></td>
@@ -20,6 +20,7 @@
      </tr>
   </tbody>
 </table>
+</div>
 </div>
 </div>
 </div>

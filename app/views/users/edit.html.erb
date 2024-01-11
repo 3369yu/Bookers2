@@ -3,7 +3,7 @@
       <div class="col-lg-4 mx-auto">
         <h2>Users info</h2>
           <% if @user.errors.any? %>
-            <%= @user.errors.count %> errors prohibited this book from being saved:
+            <%= @user.errors.count %> errors prohibited this user from being saved:
             <ul>
               <% @user.errors.full_messages.each do |message| %>
               <li><%= message %></li>
